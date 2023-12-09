@@ -1,4 +1,4 @@
-package my_List;
+package my_List.stringList;
 
 public interface StringList {
 

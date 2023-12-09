@@ -1,4 +1,8 @@
-package my_List;
+package my_List.stringList;
+
+import my_List.stringListException.NotCorrectIndexException;
+import my_List.stringListException.NotFoundElement;
+import my_List.stringListException.FullListException;
 
 public class StringListImpl implements StringList {
     private String[] strings;
@@ -11,7 +15,7 @@ public class StringListImpl implements StringList {
 
     public String add(String string) {
         if (count >= strings.length) {
-            throw new ZfullListException("список заполнен");
+            throw new FullListException("список заполнен");
         }
         strings[count] = string;
         count++;
@@ -20,10 +24,10 @@ public class StringListImpl implements StringList {
 
     public String add(int index, String item) {
         if (count >= strings.length) {
-            throw new ZfullListException("список заполнен");
+            throw new FullListException("список заполнен");
         }
         if (index < 0 | index > count) {
-            throw new ZNotCorrectIndexException("введен не корректный индекс");
+            throw new NotCorrectIndexException("введен не корректный индекс");
         }
         for (int i = count; i >= index; i--) {
             strings[count] = strings[count-1];
@@ -36,7 +40,7 @@ public class StringListImpl implements StringList {
     @Override
     public String set(int index, String item) {
         if (index < 0 | index > count-1) {
-            throw new ZNotCorrectIndexException("введен не корректный индекс");
+            throw new NotCorrectIndexException("введен не корректный индекс");
         }
         strings[index] = item;
         return item;
@@ -58,7 +62,7 @@ public class StringListImpl implements StringList {
         }
         count--;
         if (firstRemove) {
-            throw new ZNotfoundElement("Вы пытаетесь удалить не существующий элемент");
+            throw new NotFoundElement("Вы пытаетесь удалить не существующий элемент");
         }
         return item;
     }
@@ -66,7 +70,7 @@ public class StringListImpl implements StringList {
     @Override
     public String remove(int index) {
         if (index < 0 | index >= count) {
-            throw new ZNotCorrectIndexException("удалить по индексу не удалось!");
+            throw new NotCorrectIndexException("удалить по индексу не удалось!");
         }
         String save = strings[index];
         for (int i = index; i <= count-1; i++) {

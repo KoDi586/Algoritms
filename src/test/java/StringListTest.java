@@ -1,4 +1,8 @@
-import my_List.*;
+import my_List.stringList.StringList;
+import my_List.stringList.StringListImpl;
+import my_List.stringListException.NotCorrectIndexException;
+import my_List.stringListException.NotFoundElement;
+import my_List.stringListException.FullListException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +19,7 @@ public class StringListTest {
         Assertions.assertEquals("[aabbcc, aabbcc]",
                 Arrays.toString(stringList.getStrings()));
 
-        Assertions.assertThrows(ZfullListException.class, () -> {
+        Assertions.assertThrows(FullListException.class, () -> {
             stringList.add("hjk");
         });
     }
@@ -29,7 +33,7 @@ public class StringListTest {
         String finalString = "ff";
         Assertions.assertEquals(stringList.add(firstString), "aa");
         Assertions.assertEquals(stringList.add(secondString), "bb");
-        Assertions.assertThrows(ZNotCorrectIndexException.class, () -> {
+        Assertions.assertThrows(NotCorrectIndexException.class, () -> {
             stringList.add(100, "hjk");
         });
         stringList.add(1, thridString);
@@ -37,7 +41,7 @@ public class StringListTest {
         Assertions.assertEquals(Arrays.toString(stringList.getStrings()),
                 "[aa, cc, bb, ff]");
 
-        Assertions.assertThrows(ZfullListException.class, () ->{
+        Assertions.assertThrows(FullListException.class, () ->{
             stringList.add(3, "ghj");
         });
     }
@@ -54,7 +58,7 @@ public class StringListTest {
         Assertions.assertEquals(Arrays.toString(stringList.getStrings()),
                 "[cc, bb]");
 
-        Assertions.assertThrows(ZNotCorrectIndexException.class, () -> {
+        Assertions.assertThrows(NotCorrectIndexException.class, () -> {
             stringList.set(-2, "hjk");
         });
     }
@@ -72,7 +76,7 @@ public class StringListTest {
         Assertions.assertEquals(Arrays.toString(stringList.getStrings()),
                 "[bb, null]");
 
-        Assertions.assertThrows(ZNotfoundElement.class, () -> {
+        Assertions.assertThrows(NotFoundElement.class, () -> {
             stringList.remove("ff");
         });
 
@@ -90,7 +94,7 @@ public class StringListTest {
         stringList.add(thridString);
         Assertions.assertEquals(stringList.remove(1), "bb");
 
-        Assertions.assertThrows(ZNotCorrectIndexException.class, ()-> {
+        Assertions.assertThrows(NotCorrectIndexException.class, ()-> {
             stringList.remove(3);
         });
 
