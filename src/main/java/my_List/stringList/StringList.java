@@ -1,4 +1,4 @@
-package my_List;
+package my_List.stringList;
 
 public interface StringList {
 
@@ -39,45 +39,45 @@ public interface StringList {
 
     // Проверка на существование элемента.
     // Вернуть true/false;
-//    boolean contains(String item);
+    boolean contains(String item);
 
     // Поиск элемента.
     // Вернуть индекс элемента
     // или -1 в случае отсутствия.
-//    int indexOf(String item);
+    int indexOf(String item);
 
     // Поиск элемента с конца.
     // Вернуть индекс элемента
     // или -1 в случае отсутствия.
-//    int lastIndexOf(String item);
+    int lastIndexOf(String item);
 
     // Получить элемент по индексу.
     // Вернуть элемент или исключение,
     // если выходит за рамки фактического
     // количества элементов.
-//    String get(int index);
+    String get(int index);
 
     // Сравнить текущий список с другим.
     // Вернуть true/false или исключение,
     // если передан null.
-//    boolean equals(StringList otherList);
+    boolean equals(StringList otherList);
 
     // Вернуть фактическое количество элементов.
-//    int size();
+    int size();
 
     // Вернуть true,
     // если элементов в списке нет,
     // иначе false.
-//    boolean isEmpty();
+    boolean isEmpty();
 
     // Удалить все элементы из списка.
-//    void clear();
+    void clear();
 
     // Создать новый массив
     // из строк в списке
     // и вернуть его.
-//    String[] toArray();
+    String[] toArray();
 
-    String[] getStrings();
+    String[] getStringsArray();
 }
 
