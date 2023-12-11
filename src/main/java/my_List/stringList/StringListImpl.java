@@ -4,6 +4,8 @@ import my_List.stringListException.NotCorrectIndexException;
 import my_List.stringListException.NotFoundElement;
 import my_List.stringListException.FullListException;
 
+import java.util.Arrays;
+
 public class StringListImpl implements StringList {
     private String[] strings;
     private int count;
@@ -13,6 +15,7 @@ public class StringListImpl implements StringList {
         count = 0;
     }
 
+    @Override
     public String add(String string) {
         if (count >= strings.length) {
             throw new FullListException("список заполнен");
@@ -22,6 +25,7 @@ public class StringListImpl implements StringList {
         return string;
     }
 
+    @Override
     public String add(int index, String item) {
         if (count >= strings.length) {
             throw new FullListException("список заполнен");
@@ -84,7 +88,74 @@ public class StringListImpl implements StringList {
         return save;
     }
 
-    public String[] getStrings() {
+    @Override
+    public boolean contains(String item) {
+        for (String string : strings) {
+            if (string.equals(item)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public int indexOf(String item) {
+        for (int i = 0; i < strings.length; i++) {
+            if (item.equals(strings[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public int lastIndexOf(String item) {
+        for (int i = strings.length-1; i >= 0 ; i--) {
+            if (item.equals(strings[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public String get(int index) {
+        if (index >= strings.length | index < 0) {
+            throw new NotCorrectIndexException("проблема в индексе get()");
+        }
+        return strings[index];
+    }
+
+    @Override
+    public boolean equals(StringList otherList) {
+        if (otherList == null) {
+            throw new NullPointerException("переданный лист является null");
+        }
+        return Arrays.equals(strings, otherList.getStringsArray());
+    }
+
+    @Override
+    public int size() {
+        return count;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
+    @Override
+    public void clear() {
+        strings = new String[strings.length];
+        count = 0;
+    }
+
+    @Override
+    public String[] toArray() {
+        return Arrays.copyOf(strings, strings.length);
+    }
+
+    public String[] getStringsArray() {
         return strings;
     }
 
