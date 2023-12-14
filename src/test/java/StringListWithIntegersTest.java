@@ -1,22 +1,23 @@
 import my_List.stringList.StringList;
 import my_List.stringList.StringListImplString;
+import my_List.stringList.StringListWithInteger;
+import my_List.stringListException.FullListException;
 import my_List.stringListException.NotCorrectIndexException;
 import my_List.stringListException.NotFoundElement;
-import my_List.stringListException.FullListException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-public class StringListTest {
+public class StringListWithIntegersTest {
 
     @Test
     public void add() {
-        StringList stringList = new StringListImplString(2);
-        String firstString = "aabbcc";
-        Assertions.assertEquals(stringList.add(firstString), "aabbcc");
-        Assertions.assertEquals(stringList.add(firstString), "aabbcc");
-        Assertions.assertEquals("[aabbcc, aabbcc]",
+        StringList stringList = new StringListWithInteger(2);
+        Integer firstString = 1234;
+        Assertions.assertEquals(stringList.add(firstString), 1234);
+        Assertions.assertEquals(stringList.add(firstString), 1234);
+        Assertions.assertEquals("[1234, 1234]",
                 Arrays.toString(stringList.getStringsArray()));
 
         Assertions.assertThrows(FullListException.class, () -> {
@@ -249,7 +250,7 @@ public class StringListTest {
 
     @Test
     public void toArray() {
-        StringList stringList = new StringListImplString(3);
+        StringList stringList = new StringListWithInteger(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -258,7 +259,7 @@ public class StringListTest {
         stringList.add(secondString);
         stringList.add(thridString);
 
-        String[] newStrings = (String[]) stringList.toArray();
+        Integer[] newStrings = (Integer[]) stringList.toArray();
 
         Assertions.assertEquals(Arrays.toString(newStrings), "[aa, bb, cc]");
     }
