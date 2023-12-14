@@ -1,11 +1,13 @@
 package my_List.stringList;
 
-public interface StringList {
+import org.springframework.objenesis.ObjenesisHelper;
+
+public interface StringList <Other> {
 
     // Добавление элемента.
     // Вернуть добавленный элемент
     // в качестве результата выполнения.
-    String add(String item);
+    String add(Other item);
 
     // Добавление элемента
     // на определенную позицию списка.
@@ -14,7 +16,7 @@ public interface StringList {
     // выбросить исключение.
     // Вернуть добавленный элемент
     // в качестве результата выполнения.
-    String add(int index, String item);
+    String add(int index, Other item);
 
     // Установить элемент
     // на определенную позицию,
@@ -23,13 +25,13 @@ public interface StringList {
     // если индекс больше
     // фактического количества элементов
     // или выходит за пределы массива.
-    String set(int index, String item);
+    String set(int index, Other item);
 
     // Удаление элемента.
     // Вернуть удаленный элемент
     // или исключение, если подобный
     // элемент отсутствует в списке.
-    String remove(String item);
+    String remove(Other item);
 
     // Удаление элемента по индексу.
     // Вернуть удаленный элемент
@@ -39,17 +41,17 @@ public interface StringList {
 
     // Проверка на существование элемента.
     // Вернуть true/false;
-    boolean contains(String item);
+    boolean contains(Other item);
 
     // Поиск элемента.
     // Вернуть индекс элемента
     // или -1 в случае отсутствия.
-    int indexOf(String item);
+    int indexOf(Other item);
 
     // Поиск элемента с конца.
     // Вернуть индекс элемента
     // или -1 в случае отсутствия.
-    int lastIndexOf(String item);
+    int lastIndexOf(Other item);
 
     // Получить элемент по индексу.
     // Вернуть элемент или исключение,
@@ -76,8 +78,8 @@ public interface StringList {
     // Создать новый массив
     // из строк в списке
     // и вернуть его.
-    String[] toArray();
+    Other[] toArray();
 
-    String[] getStringsArray();
+    Other[] getStringsArray();
 }
 

@@ -6,11 +6,11 @@ import my_List.stringListException.FullListException;
 
 import java.util.Arrays;
 
-public class StringListImpl implements StringList {
+public class StringListImplString implements StringList <String> {
     private String[] strings;
     private int count;
 
-    public StringListImpl(int size) {
+    public StringListImplString(int size) {
         strings = new String[size];
         count = 0;
     }
