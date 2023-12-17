@@ -1,5 +1,5 @@
-import my_List.stringList.StringList;
-import my_List.stringList.StringListImplString;
+import my_List.stringList.MyListStOrInt;
+import my_List.stringList.ListWithString;
 import my_List.stringListException.NotCorrectIndexException;
 import my_List.stringListException.NotFoundElement;
 import my_List.stringListException.FullListException;
@@ -12,7 +12,7 @@ public class StringListTest {
 
     @Test
     public void add() {
-        StringList stringList = new StringListImplString(2);
+        MyListStOrInt stringList = new ListWithString(2);
         String firstString = "aabbcc";
         Assertions.assertEquals(stringList.add(firstString), "aabbcc");
         Assertions.assertEquals(stringList.add(firstString), "aabbcc");
@@ -26,7 +26,7 @@ public class StringListTest {
 
     @Test
     public void addWithIndex() {
-        StringList stringList = new StringListImplString(4);
+        MyListStOrInt stringList = new ListWithString(4);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -48,7 +48,7 @@ public class StringListTest {
 
     @Test
     public void set() {
-        StringList stringList = new StringListImplString(2);
+        MyListStOrInt stringList = new ListWithString(2);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -65,7 +65,7 @@ public class StringListTest {
 
     @Test
     public void remove() {
-        StringList stringList = new StringListImplString(2);
+        MyListStOrInt stringList = new ListWithString(2);
         String firstString = "aa";
         String secondString = "bb";
 
@@ -84,7 +84,7 @@ public class StringListTest {
 
     @Test
     public void removeByIndex() {
-        StringList stringList = new StringListImplString(3);
+        MyListStOrInt stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -102,7 +102,7 @@ public class StringListTest {
 
     @Test
     public void contain() {
-        StringList stringList = new StringListImplString(3);
+        MyListStOrInt stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -117,7 +117,7 @@ public class StringListTest {
 
     @Test
     public void indexOf() {
-        StringList stringList = new StringListImplString(3);
+        MyListStOrInt stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -133,7 +133,7 @@ public class StringListTest {
 
     @Test
     public void lastIndexOf() {
-        StringList stringList = new StringListImplString(3);
+        MyListStOrInt stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -148,7 +148,7 @@ public class StringListTest {
 
     @Test
     public void get() {
-        StringList stringList = new StringListImplString(3);
+        MyListStOrInt stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -166,10 +166,10 @@ public class StringListTest {
 
     @Test
     public void equals() {
-        StringList stringList = new StringListImplString(3);
-        StringList stringListNotSort = new StringListImplString(3);
-        StringList stringListNotEq = new StringListImplString(3);
-        StringList stringListEquals = new StringListImplString(3);
+        MyListStOrInt stringList = new ListWithString(3);
+        MyListStOrInt stringListNotSort = new ListWithString(3);
+        MyListStOrInt stringListNotEq = new ListWithString(3);
+        MyListStOrInt stringListEquals = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -200,7 +200,7 @@ public class StringListTest {
 
     @Test
     public void size() {
-        StringList stringList = new StringListImplString(3);
+        MyListStOrInt stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -217,7 +217,7 @@ public class StringListTest {
 
     @Test
     public void idEmpty() {
-        StringList stringList = new StringListImplString(3);
+        MyListStOrInt stringList = new ListWithString(3);
         Assertions.assertTrue(stringList.isEmpty());
 
 
@@ -231,7 +231,7 @@ public class StringListTest {
 
     @Test
     public void clear() {
-        StringList stringList = new StringListImplString(3);
+        MyListStOrInt stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -249,7 +249,7 @@ public class StringListTest {
 
     @Test
     public void toArray() {
-        StringList stringList = new StringListImplString(3);
+        MyListStOrInt stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";

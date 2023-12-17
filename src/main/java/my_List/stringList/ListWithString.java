@@ -6,11 +6,11 @@ import my_List.stringListException.FullListException;
 
 import java.util.Arrays;
 
-public class StringListImplString implements StringList <String> {
+public class ListWithString implements MyListStOrInt<String> {
     private String[] strings;
     private int count;
 
-    public StringListImplString(int size) {
+    public ListWithString(int size) {
         strings = new String[size];
         count = 0;
     }
@@ -127,7 +127,7 @@ public class StringListImplString implements StringList <String> {
     }
 
     @Override
-    public boolean equals(StringList otherList) {
+    public boolean equals(MyListStOrInt otherList) {
         if (otherList == null) {
             throw new NullPointerException("переданный лист является null");
         }

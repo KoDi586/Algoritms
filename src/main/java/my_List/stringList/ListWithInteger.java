@@ -1,6 +1,5 @@
 package my_List.stringList;
 
-import my_List.stringListException.FullListException;
 import my_List.stringListException.NotCorrectIndexException;
 import my_List.stringListException.NotFoundElement;
 
@@ -9,29 +8,29 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class StringListWithInteger implements StringList <Integer> {
+public class ListWithInteger implements MyListStOrInt<Integer> {
     private Integer[] integers;
     private int count;
 
-    public StringListWithInteger(int size) {
+    public ListWithInteger(int size) {
         integers = new Integer[size];
         count = 0;
     }
 
     @Override
-    public String add(Integer integer) {
+    public Integer add(Integer integer) {
         if (count >= integers.length) {
-            throw new FullListException("список заполнен");
+            grow();
         }
         integers[count] = integer;
         count++;
-        return integer.toString();
+        return integer;
     }
 
     @Override
-    public String add(int index, Integer item) {
+    public Integer add(int index, Integer item) {
         if (count >= integers.length) {
-            throw new FullListException("список заполнен");
+            grow();
         }
         if (index < 0 | index > count) {
             throw new NotCorrectIndexException("введен не корректный индекс");
@@ -41,20 +40,20 @@ public class StringListWithInteger implements StringList <Integer> {
         }
         integers[index] = item;
         count++;
-        return item.toString();
+        return item;
     }
 
     @Override
-    public String set(int index, Integer item) {
+    public Integer set(int index, Integer item) {
         if (index < 0 | index > count-1) {
             throw new NotCorrectIndexException("введен не корректный индекс");
         }
         integers[index] = item;
-        return item.toString();
+        return item;
     }
 
     @Override
-    public String remove(Integer item) {
+    public Integer remove(Integer item) {
         boolean firstRemove = true;
         for (int i = 0; i <= count-1; i++) {
             if (!integers[i].equals(item) & firstRemove) {
@@ -71,11 +70,11 @@ public class StringListWithInteger implements StringList <Integer> {
         if (firstRemove) {
             throw new NotFoundElement("Вы пытаетесь удалить не существующий элемент");
         }
-        return item.toString();
+        return item;
     }
 
     @Override
-    public String remove(int index) {
+    public Integer remove(int index) {
         if (index < 0 | index >= count) {
             throw new NotCorrectIndexException("удалить по индексу не удалось!");
         }
@@ -88,7 +87,7 @@ public class StringListWithInteger implements StringList <Integer> {
             integers[i] = integers[i + 1];
         }
         count--;
-        return save.toString();
+        return save;
     }
 
     @Override
@@ -103,12 +102,13 @@ public class StringListWithInteger implements StringList <Integer> {
 
     @Override
     public int indexOf(Integer item) {
-        for (int i = 0; i < integers.length; i++) {
-            if (item.equals(integers[i])) {
-                return i;
-            }
-        }
-        return -1;
+        return binaryFindWithSortArray(item);
+//        for (int i = 0; i < integers.length; i++) {
+//            if (item.equals(integers[i])) {
+//                return i;
+//            }
+//        }
+//        return -1;
     }
 
     @Override
@@ -122,15 +122,15 @@ public class StringListWithInteger implements StringList <Integer> {
     }
 
     @Override
-    public String get(int index) {
+    public Integer get(int index) {
         if (index >= integers.length | index < 0) {
             throw new NotCorrectIndexException("проблема в индексе get()");
         }
-        return integers[index].toString();
+        return integers[index];
     }
 
     @Override
-    public boolean equals(StringList otherList) {
+    public boolean equals(MyListStOrInt otherList) {
         if (otherList == null) {
             throw new NullPointerException("переданный лист является null");
         }
@@ -163,17 +163,12 @@ public class StringListWithInteger implements StringList <Integer> {
     }
 
     private Integer[] sort(Integer[] integers1) {
-        List<Integer> list = new ArrayList<>(List.of(integers1));
-        Collections.sort(list);
 
-        Integer[] newIntegers = new Integer[list.size()];
-        for (int i = 0; i < newIntegers.length; i++) {
-            newIntegers[i] = list.get(i);
-        }
-        return newIntegers;
+        quickSort(integers1, 0, integers1.length - 1);
+        return integers1;
     }
 
-    public int binarnFindWithSortArray(Integer integer) {
+    public int binaryFindWithSortArray(Integer integer) {
         Integer[] sortIntegers = sort(integers);
         if (sortIntegers.length != 0) {
             List<Integer> list = new ArrayList<>(List.of(sortIntegers));
@@ -182,28 +177,49 @@ public class StringListWithInteger implements StringList <Integer> {
         return -1;
     }
 
-//    public int binarnFind(Integer integer) {
-//        Integer[] sortIntegers = sort(integers);
-//        if (sortIntegers.length != 0) {
-//            return binarnFind(integer, integers);
-//        }
-//        return -1;
-//    }
-//
-//    private Integer binarnFind(Integer integer, Integer[] list) {
-//        if (list.length == 1) {
-//            return list[0];
-//        }
-//        int medium;
-//        if (list.length % 2 == 0) {//если четное кол во элементов
-//            medium = list.length / 2 - 1;
-//        } else {
-//            medium = list.length / 2;
-//        }
-//
-//        if (list[medium] = integer) {
-//            return
-//        }
-//    }
+
+    private void grow() {
+        Integer[] newIntegers;
+        int newSize = (int) (integers.length * 1.5);
+        newIntegers = Arrays.copyOf(integers, newSize);
+        integers = newIntegers;
+        for (int i = count; i < newSize; i++) {
+            integers[i] = 0;
+        }
+    }
+
+
+    //  быстрая сортирвка
+    public static void quickSort(Integer[] arr, Integer begin, Integer end) {
+        if (begin < end) {
+            int partitionIndex = partition(arr, begin, end);
+
+            quickSort(arr, begin, partitionIndex - 1);
+            quickSort(arr, partitionIndex + 1, end);
+        }
+    }
+
+    private static Integer partition(Integer[] arr, Integer begin, Integer end) {
+        Integer pivot = arr[end];
+        Integer i = (begin - 1);
+
+        for (int j = begin; j < end; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+
+                swapElements(arr, i, j);
+            }
+        }
+
+        swapElements(arr, i + 1, end);
+        return i + 1;
+    }
+
+    private static void swapElements(Integer[] arr, Integer left, Integer right) {
+        Integer temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+    }
+
 
 }
