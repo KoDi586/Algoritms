@@ -117,7 +117,7 @@ public class StringListTest {
 
     @Test
     public void indexOf() {
-        MyListStOrInt stringList = new ListWithString(3);
+        MyListStOrInt<String> stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -133,7 +133,7 @@ public class StringListTest {
 
     @Test
     public void lastIndexOf() {
-        MyListStOrInt stringList = new ListWithString(3);
+        MyListStOrInt<String > stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -142,8 +142,8 @@ public class StringListTest {
         stringList.add(secondString);
         stringList.add(thridString);
 
-        Assertions.assertEquals(stringList.indexOf("cc"), 2);
-        Assertions.assertEquals(stringList.indexOf("ff"), -1);
+        Assertions.assertEquals(stringList.lastIndexOf("cc"), 2);
+        Assertions.assertEquals(stringList.lastIndexOf("ff"), -1);
     }
 
     @Test

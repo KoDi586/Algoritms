@@ -66,34 +66,36 @@ public class ListWithIntegersTest {
 
     @Test
     public void remove() {
-        MyListStOrInt integerList = new ListWithInteger(2);
-        String firstString = "aa";
-        String secondString = "bb";
+        MyListStOrInt<Integer> integerList = new ListWithInteger(2);
+        Integer firstNum = 11;
+        Integer secondNum = 22;
 
-        integerList.add(firstString);
-        integerList.add(secondString);
-        Assertions.assertEquals(integerList.remove("aa"), "aa");
+        integerList.add(firstNum);
+        integerList.add(secondNum);
+        Assertions.assertEquals(integerList.remove(firstNum), 11);
 
         Assertions.assertEquals(Arrays.toString(integerList.getStringsArray()),
-                "[bb, null]");
+                "[22, null]");
+
+        Integer forRemove = 44;
 
         Assertions.assertThrows(NotFoundElement.class, () -> {
-            integerList.remove("ff");
+            integerList.remove(forRemove);
         });
 
     }
 
     @Test
     public void removeByIndex() {
-        MyListStOrInt integerList = new ListWithInteger(3);
-        String firstString = "aa";
-        String secondString = "bb";
-        String thridString = "cc";
+        MyListStOrInt<Integer> integerList = new ListWithInteger(3);
+        Integer firstNum = 11;
+        Integer secondNum = 22;
+        Integer thirdNum = 33;
 
-        integerList.add(firstString);
-        integerList.add(secondString);
-        integerList.add(thridString);
-        Assertions.assertEquals(integerList.remove(1), "bb");
+        integerList.add(firstNum);
+        integerList.add(secondNum);
+        integerList.add(thirdNum);
+        Assertions.assertEquals(integerList.remove(1), 22);
 
         Assertions.assertThrows(NotCorrectIndexException.class, ()-> {
             integerList.remove(3);
@@ -103,62 +105,62 @@ public class ListWithIntegersTest {
 
     @Test
     public void contain() {
-        MyListStOrInt integerList = new ListWithInteger(3);
-        String firstString = "aa";
-        String secondString = "bb";
-        String thridString = "cc";
+        MyListStOrInt<Integer> integerList = new ListWithInteger(3);
+        Integer firstNum = 11;
+        Integer secondNum = 22;
+        Integer thirdNum = 33;
 
-        integerList.add(firstString);
-        integerList.add(secondString);
-        integerList.add(thridString);
+        integerList.add(firstNum);
+        integerList.add(secondNum);
+        integerList.add(thirdNum);
 
-        Assertions.assertTrue(integerList.contains("bb"));
-        Assertions.assertFalse(integerList.contains("ff"));
+        Assertions.assertTrue(integerList.contains(22));
+        Assertions.assertFalse(integerList.contains(55));
     }
 
     @Test
     public void indexOf() {
-        MyListStOrInt integerList = new ListWithInteger(3);
-        String firstString = "aa";
-        String secondString = "bb";
-        String thridString = "cc";
+        MyListStOrInt<Integer> integerList = new ListWithInteger(3);
+        Integer firstNum = 11;
+        Integer secondNum = 22;
+        Integer thirdNum = 33;
 
-        integerList.add(firstString);
-        integerList.add(secondString);
-        integerList.add(thridString);
+        integerList.add(firstNum);
+        integerList.add(secondNum);
+        integerList.add(thirdNum);
 
-        Assertions.assertEquals(integerList.indexOf("cc"), 2);
-        Assertions.assertEquals(integerList.indexOf("ff"), -1);
+        Assertions.assertEquals(integerList.indexOf(33), 2);
+        Assertions.assertEquals(integerList.indexOf(55), -1);
     }
 
 
     @Test
     public void lastIndexOf() {
-        MyListStOrInt integerList = new ListWithInteger(3);
-        String firstString = "aa";
-        String secondString = "bb";
-        String thridString = "cc";
+        MyListStOrInt<Integer> integerList = new ListWithInteger(3);
+        Integer firstNum = 11;
+        Integer secondNum = 22;
+        Integer thirdNum = 33;
 
-        integerList.add(firstString);
-        integerList.add(secondString);
-        integerList.add(thridString);
+        integerList.add(firstNum);
+        integerList.add(secondNum);
+        integerList.add(thirdNum);
 
-        Assertions.assertEquals(integerList.indexOf("cc"), 2);
-        Assertions.assertEquals(integerList.indexOf("ff"), -1);
+        Assertions.assertEquals(integerList.lastIndexOf(33), 2);
+        Assertions.assertEquals(integerList.lastIndexOf(66), -1);
     }
 
     @Test
     public void get() {
-        MyListStOrInt integerList = new ListWithInteger(3);
-        String firstString = "aa";
-        String secondString = "bb";
-        String thridString = "cc";
+        MyListStOrInt<Integer> integerList = new ListWithInteger(3);
+        Integer firstNum = 11;
+        Integer secondNum = 22;
+        Integer thirdNum = 33;
 
-        integerList.add(firstString);
-        integerList.add(secondString);
-        integerList.add(thridString);
+        integerList.add(firstNum);
+        integerList.add(secondNum);
+        integerList.add(thirdNum);
 
-        Assertions.assertEquals(integerList.get(1), "bb");
+        Assertions.assertEquals(integerList.get(1), 22);
 
         Assertions.assertThrows(NotCorrectIndexException.class, () -> {
             integerList.get(3);
@@ -167,28 +169,29 @@ public class ListWithIntegersTest {
 
     @Test
     public void equals() {
-        MyListStOrInt integerList = new ListWithInteger(3);
-        MyListStOrInt stringListNotSort = new ListWithInteger(3);
-        MyListStOrInt stringListNotEq = new ListWithInteger(3);
-        MyListStOrInt stringListEquals = new ListWithInteger(3);
-        String firstString = "aa";
-        String secondString = "bb";
-        String thridString = "cc";
+        MyListStOrInt<Integer> integerList = new ListWithInteger(3);
+        MyListStOrInt<Integer> stringListNotSort = new ListWithInteger(3);
+        MyListStOrInt<Integer> stringListNotEq = new ListWithInteger(3);
+        MyListStOrInt<Integer> stringListEquals = new ListWithInteger(3);
 
-        integerList.add(firstString);
-        stringListNotSort.add(firstString);
-        stringListNotEq.add(firstString);
-        stringListEquals.add(firstString);
+        Integer firstNum = 11;
+        Integer secondNum = 22;
+        Integer thirdNum = 33;
 
-        integerList.add(secondString);
-        stringListNotSort.add(thridString);
-        stringListNotEq.add(secondString);
-        stringListEquals.add(secondString);
+        integerList.add(firstNum);
+        stringListNotSort.add(firstNum);
+        stringListNotEq.add(firstNum);
+        stringListEquals.add(firstNum);
 
-        integerList.add(thridString);
-        stringListNotSort.add(secondString);
-        stringListNotEq.add("ff");
-        stringListEquals.add(thridString);
+        integerList.add(secondNum);
+        stringListNotSort.add(thirdNum);
+        stringListNotEq.add(secondNum);
+        stringListEquals.add(secondNum);
+
+        integerList.add(thirdNum);
+        stringListNotSort.add(secondNum);
+        stringListNotEq.add(555);
+        stringListEquals.add(thirdNum);
 
         Assertions.assertTrue(integerList.equals(stringListEquals));
         Assertions.assertFalse(integerList.equals(stringListNotEq));
@@ -201,29 +204,29 @@ public class ListWithIntegersTest {
 
     @Test
     public void size() {
-        MyListStOrInt integerList = new ListWithInteger(3);
-        String firstString = "aa";
-        String secondString = "bb";
-        String thridString = "cc";
+        MyListStOrInt<Integer> integerList = new ListWithInteger(3);
+        Integer firstNum = 11;
+        Integer secondNum = 22;
+        Integer thirdNum = 33;
 
-        integerList.add(firstString);
-        integerList.add(secondString);
+        integerList.add(firstNum);
+        integerList.add(secondNum);
 
         Assertions.assertEquals(integerList.size(), 2);
 
-        integerList.add(thridString);
+        integerList.add(thirdNum);
 
         Assertions.assertEquals(integerList.size(), 3);
     }
 
     @Test
     public void idEmpty() {
-        MyListStOrInt integerList = new ListWithInteger(3);
+        MyListStOrInt<Integer> integerList = new ListWithInteger(3);
         Assertions.assertTrue(integerList.isEmpty());
 
 
-        String firstString = "aa";
-        integerList.add(firstString);
+        Integer firstNum = 11;
+        integerList.add(firstNum);
         Assertions.assertFalse(integerList.isEmpty());
 
         integerList.remove(0);
@@ -232,36 +235,36 @@ public class ListWithIntegersTest {
 
     @Test
     public void clear() {
-        MyListStOrInt integerList = new ListWithInteger(3);
-        String firstString = "aa";
-        String secondString = "bb";
-        String thridString = "cc";
+        MyListStOrInt<Integer> integerList = new ListWithInteger(3);
+        Integer firstNum = 11;
+        Integer secondNum = 22;
+        Integer thirdNum = 33;
 
-        integerList.add(firstString);
-        integerList.add(secondString);
-        integerList.add(thridString);
+        integerList.add(firstNum);
+        integerList.add(secondNum);
+        integerList.add(thirdNum);
 
         Assertions.assertFalse(integerList.isEmpty());
         integerList.clear();
         Assertions.assertTrue(integerList.isEmpty());
 
-        integerList.add(firstString);
+        integerList.add(firstNum);
     }
 
     @Test
     public void toArray() {
-        MyListStOrInt integerList = new ListWithInteger(3);
-        String firstString = "aa";
-        String secondString = "bb";
-        String thridString = "cc";
+        MyListStOrInt<Integer> integerList = new ListWithInteger(3);
+        Integer firstNum = 11;
+        Integer secondNum = 22;
+        Integer thirdNum = 33;
 
-        integerList.add(firstString);
-        integerList.add(secondString);
-        integerList.add(thridString);
+        integerList.add(firstNum);
+        integerList.add(secondNum);
+        integerList.add(thirdNum);
 
-        Integer[] newStrings = (Integer[]) integerList.toArray();
+        Integer[] newStrings = integerList.toArray();
 
-        Assertions.assertEquals(Arrays.toString(newStrings), "[aa, bb, cc]");
+        Assertions.assertEquals(Arrays.toString(newStrings),Arrays.toString(new Integer[]{11, 22, 33}));
     }
 
 

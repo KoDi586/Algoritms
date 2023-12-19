@@ -102,13 +102,12 @@ public class ListWithInteger implements MyListStOrInt<Integer> {
 
     @Override
     public int indexOf(Integer item) {
-        return binaryFindWithSortArray(item);
-//        for (int i = 0; i < integers.length; i++) {
-//            if (item.equals(integers[i])) {
-//                return i;
-//            }
-//        }
-//        return -1;
+        for (int i = 0; i < integers.length; i++) {
+            if (item.equals(integers[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
