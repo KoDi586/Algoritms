@@ -12,7 +12,7 @@ public class StringListTest {
 
     @Test
     public void add() {
-        MyListStOrInt stringList = new ListWithString(2);
+        MyListStOrInt<String> stringList = new ListWithString(2);
         String firstString = "aabbcc";
         Assertions.assertEquals(stringList.add(firstString), "aabbcc");
         Assertions.assertEquals(stringList.add(firstString), "aabbcc");
@@ -26,7 +26,7 @@ public class StringListTest {
 
     @Test
     public void addWithIndex() {
-        MyListStOrInt stringList = new ListWithString(4);
+        MyListStOrInt<String> stringList = new ListWithString(4);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -48,7 +48,7 @@ public class StringListTest {
 
     @Test
     public void set() {
-        MyListStOrInt stringList = new ListWithString(2);
+        MyListStOrInt<String> stringList = new ListWithString(2);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -65,7 +65,7 @@ public class StringListTest {
 
     @Test
     public void remove() {
-        MyListStOrInt stringList = new ListWithString(2);
+        MyListStOrInt<String> stringList = new ListWithString(2);
         String firstString = "aa";
         String secondString = "bb";
 
@@ -84,7 +84,7 @@ public class StringListTest {
 
     @Test
     public void removeByIndex() {
-        MyListStOrInt stringList = new ListWithString(3);
+        MyListStOrInt<String> stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -102,7 +102,7 @@ public class StringListTest {
 
     @Test
     public void contain() {
-        MyListStOrInt stringList = new ListWithString(3);
+        MyListStOrInt<String> stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -148,7 +148,7 @@ public class StringListTest {
 
     @Test
     public void get() {
-        MyListStOrInt stringList = new ListWithString(3);
+        MyListStOrInt<String> stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -166,10 +166,10 @@ public class StringListTest {
 
     @Test
     public void equals() {
-        MyListStOrInt stringList = new ListWithString(3);
-        MyListStOrInt stringListNotSort = new ListWithString(3);
-        MyListStOrInt stringListNotEq = new ListWithString(3);
-        MyListStOrInt stringListEquals = new ListWithString(3);
+        MyListStOrInt<String> stringList = new ListWithString(3);
+        MyListStOrInt<String> stringListNotSort = new ListWithString(3);
+        MyListStOrInt<String> stringListNotEq = new ListWithString(3);
+        MyListStOrInt<String> stringListEquals = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -200,7 +200,7 @@ public class StringListTest {
 
     @Test
     public void size() {
-        MyListStOrInt stringList = new ListWithString(3);
+        MyListStOrInt<String> stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -217,7 +217,7 @@ public class StringListTest {
 
     @Test
     public void idEmpty() {
-        MyListStOrInt stringList = new ListWithString(3);
+        MyListStOrInt<String> stringList = new ListWithString(3);
         Assertions.assertTrue(stringList.isEmpty());
 
 
@@ -231,7 +231,7 @@ public class StringListTest {
 
     @Test
     public void clear() {
-        MyListStOrInt stringList = new ListWithString(3);
+        MyListStOrInt<String> stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
@@ -249,7 +249,7 @@ public class StringListTest {
 
     @Test
     public void toArray() {
-        MyListStOrInt stringList = new ListWithString(3);
+        MyListStOrInt<String> stringList = new ListWithString(3);
         String firstString = "aa";
         String secondString = "bb";
         String thridString = "cc";
